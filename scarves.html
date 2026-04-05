@@ -1,0 +1,606 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>针织围巾系列 - 金华市酂圜针织品有限公司</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1ABC9C;
+            --primary-dark: #16A085;
+            --primary-light: #2ECCAA;
+            --secondary-color: #E8F6F3;
+            --text-dark: #2D2D2D;
+            --text-light: #666666;
+            --white: #FFFFFF;
+            --gray-bg: #F8F9FA;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(26, 188, 156, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            border-radius: 8px;
+            background: var(--white);
+            padding: 4px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            opacity: 0.9;
+            margin-left: 1.5rem;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            padding: 10rem 2rem 4rem;
+            text-align: center;
+            color: var(--white);
+            margin-top: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        /* Products Grid */
+        .products-section {
+            padding: 4rem 2rem;
+            background: var(--gray-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 40px rgba(26, 188, 156, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #FFE4E8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-image-placeholder {
+            font-size: 6rem;
+            opacity: 0.5;
+        }
+
+        .product-info {
+            padding: 2rem;
+        }
+
+        .product-info h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .product-info p {
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
+        }
+
+        .product-specs {
+            background: var(--secondary-color);
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        .product-specs p {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .product-specs strong {
+            color: var(--primary-dark);
+        }
+
+        .product-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .price-section {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px dashed var(--secondary-color);
+        }
+
+        .price-item {
+            flex: 1;
+        }
+
+        .price-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.3rem;
+        }
+
+        .price-value {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary-dark);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            text-align: center;
+            color: var(--white);
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-info {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--primary-light);
+        }
+
+        .copyright {
+            opacity: 0.6;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .logo-text {
+                font-size: 1.4rem;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                margin-left: 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="product-landing.html" class="logo">
+                <img src="酇圜logo.jpg" alt="金华市酂圜针织品有限公司 Logo" class="logo-img">
+                <div class="logo-text">酂圜针织</div>
+            </a>
+            <nav>
+                <a href="product-landing.html">首页</a>
+                <a href="gloves.html">手套</a>
+                <a href="hats.html">帽子</a>
+                <a href="scarves.html">围巾</a>
+                <a href="product-landing.html#contact">联系</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>🧣 针织围巾系列</h1>
+        <p>柔软亲肤 · 保暖锁温 · 时尚设计</p>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <h2 class="section-title">全系列产品展示</h2>
+        <p class="section-subtitle">精选雪尼尔、仿羊绒、羊毛混纺材质 | 报价含税运，13% 税费，有效期 15 天</p>
+        
+        <div class="product-grid">
+            <!-- Product 1: 经典款围巾 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <!-- 替换为实际产品图片：<img src="products/scarves/经典款.jpg" alt="经典款围巾"> -->
+                    <div class="product-image-placeholder">🧣</div>
+                </div>
+                <div class="product-info">
+                    <h3>经典款围巾</h3>
+                    <p>简约大方，百搭必备</p>
+                    
+                    <div class="product-specs">
+                        <p><strong>材质：</strong>雪尼尔</p>
+                        <p><strong>特性：</strong>柔软亲肤，保暖透气</p>
+                        <p><strong>工艺：</strong>精细编织，不易起球</p>
+                    </div>
+                    
+                    <div class="product-tags">
+                        <span class="tag">经典百搭</span>
+                        <span class="tag">男女同款</span>
+                        <span class="tag">多色可选</span>
+                        <span class="tag">可定制</span>
+                    </div>
+                    
+                    <div class="price-section">
+                        <div class="price-item">
+                            <div class="price-label">零售价</div>
+                            <div class="price-value">咨询</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">批发价</div>
+                            <div class="price-value">电议</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2: 仿羊绒围巾 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <!-- 替换为实际产品图片：<img src="products/scarves/仿羊绒.jpg" alt="仿羊绒围巾"> -->
+                    <div class="product-image-placeholder">🧶</div>
+                </div>
+                <div class="product-info">
+                    <h3>仿羊绒围巾</h3>
+                    <p>丝滑触感，高端质感</p>
+                    
+                    <div class="product-specs">
+                        <p><strong>材质：</strong>仿羊绒</p>
+                        <p><strong>克重：</strong>50g</p>
+                        <p><strong>特性：</strong>细腻柔滑，光泽度好</p>
+                    </div>
+                    
+                    <div class="product-tags">
+                        <span class="tag">高端质感</span>
+                        <span class="tag">丝滑触感</span>
+                        <span class="tag">优雅气质</span>
+                        <span class="tag">送礼优选</span>
+                    </div>
+                    
+                    <div class="price-section">
+                        <div class="price-item">
+                            <div class="price-label">零售价</div>
+                            <div class="price-value">咨询</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">批发价</div>
+                            <div class="price-value">电议</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3: 羊毛混纺围巾 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <!-- 替换为实际产品图片：<img src="products/scarves/羊毛混纺.jpg" alt="羊毛混纺围巾"> -->
+                    <div class="product-image-placeholder">🐑</div>
+                </div>
+                <div class="product-info">
+                    <h3>羊毛混纺围巾</h3>
+                    <p>天然保暖，品质之选</p>
+                    
+                    <div class="product-specs">
+                        <p><strong>材质：</strong>羊毛混纺</p>
+                        <p><strong>特性：</strong>天然保暖，吸湿排汗</p>
+                        <p><strong>适用场景：</strong>商务、休闲、户外</p>
+                    </div>
+                    
+                    <div class="product-tags">
+                        <span class="tag">天然材质</span>
+                        <span class="tag">保暖透气</span>
+                        <span class="tag">品质优选</span>
+                        <span class="tag">耐用抗皱</span>
+                    </div>
+                    
+                    <div class="price-section">
+                        <div class="price-item">
+                            <div class="price-label">零售价</div>
+                            <div class="price-value">咨询</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">批发价</div>
+                            <div class="price-value">电议</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4: 格纹围巾 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <!-- 替换为实际产品图片：<img src="products/scarves/格纹.jpg" alt="格纹围巾"> -->
+                    <div class="product-image-placeholder">◼️</div>
+                </div>
+                <div class="product-info">
+                    <h3>经典格纹围巾</h3>
+                    <p>英伦风格，永不过时</p>
+                    
+                    <div class="product-specs">
+                        <p><strong>材质：</strong>腈纶混纺</p>
+                        <p><strong>特性：</strong>经典格纹，时尚百搭</p>
+                        <p><strong>设计：</strong>多色格纹可选</p>
+                    </div>
+                    
+                    <div class="product-tags">
+                        <span class="tag">英伦风格</span>
+                        <span class="tag">经典格纹</span>
+                        <span class="tag">时尚百搭</span>
+                        <span class="tag">情侣款</span>
+                    </div>
+                    
+                    <div class="price-section">
+                        <div class="price-item">
+                            <div class="price-label">零售价</div>
+                            <div class="price-value">咨询</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">批发价</div>
+                            <div class="price-value">电议</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5: 长款流苏围巾 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <!-- 替换为实际产品图片：<img src="products/scarves/流苏款.jpg" alt="流苏围巾"> -->
+                    <div class="product-image-placeholder">✨</div>
+                </div>
+                <div class="product-info">
+                    <h3>长款流苏围巾</h3>
+                    <p>优雅流苏，飘逸灵动</p>
+                    
+                    <div class="product-specs">
+                        <p><strong>材质：</strong>雪尼尔 + 仿羊绒</p>
+                        <p><strong>特性：</strong>超长款式，多用途</p>
+                        <p><strong>设计：</strong>精致流苏装饰</p>
+                    </div>
+                    
+                    <div class="product-tags">
+                        <span class="tag">长款设计</span>
+                        <span class="tag">精致流苏</span>
+                        <span class="tag">女士专属</span>
+                        <span class="tag">拍照上镜</span>
+                    </div>
+                    
+                    <div class="price-section">
+                        <div class="price-item">
+                            <div class="price-label">零售价</div>
+                            <div class="price-value">咨询</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">批发价</div>
+                            <div class="price-value">电议</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6: 儿童卡通围巾 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <!-- 替换为实际产品图片：<img src="products/scarves/儿童卡通.jpg" alt="儿童卡通围巾"> -->
+                    <div class="product-image-placeholder">🎨</div>
+                </div>
+                <div class="product-info">
+                    <h3>儿童卡通围巾</h3>
+                    <p>可爱图案，童趣满满</p>
+                    
+                    <div class="product-specs">
+                        <p><strong>材质：</strong>亲肤腈纶</p>
+                        <p><strong>特性：</strong>色彩鲜艳，柔软舒适</p>
+                        <p><strong>设计：</strong>多种卡通图案可选</p>
+                    </div>
+                    
+                    <div class="product-tags">
+                        <span class="tag">儿童专属</span>
+                        <span class="tag">卡通设计</span>
+                        <span class="tag">安全环保</span>
+                        <span class="tag">色彩丰富</span>
+                    </div>
+                    
+                    <div class="price-section">
+                        <div class="price-item">
+                            <div class="price-label">零售价</div>
+                            <div class="price-value">咨询</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">批发价</div>
+                            <div class="price-value">电议</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>获取完整产品目录和报价单</h2>
+        <p>填写需求信息，我们将在 24 小时内为您提供详细的产品资料和优惠报价</p>
+        <a href="product-landing.html#waitlist" class="cta-btn">立即咨询</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-info">
+            <div class="footer-logo">金华市酂圜针织品有限公司</div>
+            <p>📞 咨询热线：15988501464</p>
+            <p>📍 公司地址：浙江省金华市金东区孝顺镇低田工业区养源街 242 号</p>
+            <p>✨ 始于 2010 年 | 5000㎡现代化厂房 | 100+ 专业团队</p>
+            <div class="copyright">
+                <p>&copy; 2026 金华市酂圜针织品有限公司 版权所有</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
